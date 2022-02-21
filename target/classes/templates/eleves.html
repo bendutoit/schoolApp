@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="" xmlns:th="http//www.thymeleaf.org">
+
+<head th:replace="fragments::html_head">
+    <title>LISTE ELEVES</title>
+</head>
+
+<body>
+    <div class="container">
+        <div th:replace=" fragments::menu"></div>
+        <div class="card p-5 ">
+            <div class="card-header bg-primary text-white ">
+                <h6>LISTE ELEVES</h6>
+            </div>
+            <div class="card-body ">
+
+                <form th:action="@{eleves} " method="GET">
+                    <div class="mb-3 ">
+                        <label class="control-label ">Mot clé:</label>
+                        <input type="text " name="motcle " th:value="${motcle} " />
+                        <button class="btn btn-primary ">Chercher</button>
+                    </div>
+                </form>
+
+                <table class="table ">
+                    <caption></caption>
+                    <thead class="bg-primary fluid">
+                        <tr>
+                            <th>ID</th>
+                            <th>DATENAIS</th>
+                            <th>MATRICULE</th>
+                            <th>NOM</th>
+                            <th>PHOTO</th>
+                            <th>PRENOM</th>
+                            <th>QUARTIER</th>
+                            <th>SEXE</th>
+                            <th>CLASSE</th>
+                            <th></th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tr th:each="e:${pageEleves.content} ">
+                        <td th:text="${e.idEleves} "></td>
+                        <td th:text="${e.dateNais} "></td>
+                        <td th:text="${e.matriculeEl} "></td>
+                        <td th:text="${e.nomElv} "></td>
+                        <td th:text="${e.photoEl} "></td>
+                        <td th:text="${e.prenomEl} "></td>
+                        <td th:text="${e.quartierEl} "></td>
+                        <td th:text="${e.sexeEl}"></td>
+                        <td th:text="${e.classes.codeclasses}"></td>
+                        <td><a onclick="javascript:confirm( 'voulez vraiment supprimer?') " class="btn btn-danger " th:href="@{deleteEleve(id=${e.idEleves},page=${currentpage}, size=${size},motcle=${motcle})} ">Delete</a></td>
+                        <td><a class="btn btn-primary " th:href="@{/eleves/edit/(id=${e.idEleves})}">Edit</a></td>
+                        <td>
+                            <a class="btn btn-success " th:href="@{/eleves/edit} ">Edit</a></td>
+                    </tr>
+                </table>
+                <ul class="nav nav-pills ">
+                    <li th:each="page,status:${pages} ">
+                        <a th:class="${status.index==currentpage? 'btn btn-primary': 'btn'} " th:href="@{eleves(page=${status.index},size=${size},motcle=${motcle})} " th:text="${status.index} ">
+
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div th:replace="fragments::food "></div>
+    </div>
+</body>
+
+</html>

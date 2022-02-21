@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="" xmlns:th="http//www.thymeleaf.org">
+
+<head th:fragment="html_head">
+    <title></title>
+    <meta content="text/html; charset=utf-8" />
+    <link th:rel="stylesheet" th:href="@{/webjars/bootstrap/4.4.1/css/bootstrap.min.css} " />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" />
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+    <link th:rel="stylesheet" type="text/css" href="../static/css/myStyle.css " th:href="@{/css/myStyle.css} " />
+    <link th:rel="stylesheet" type="text/css" href="../static/css/bootstrap.min.css " th:href="@{/css/bootstrap.min.css} " />
+    <script th:src="@{/webjars/jquery/3.0.0/jquery.min.js}"></script>
+    <script th:src="@{/webjars/popper.j/1.14.3/umd/popper.min.js}"></script>
+    <script th:src="@{/webjars/bootstrap/4.0.0-2/js/bootstrap.min.js}"></script>
+</head>
+
+<body>
+
+    <div th:fragment="menu">
+        <nav class="navbar navbar-expand-sm navbar-dark bg-primary">
+
+            <ul class="nav navbar-nav">
+                <li class="navbar-nav">
+                    <a class="nav-link" th:href="@{/index} ">Home</a>
+                </li>
+                <li class="navbar-nav">
+                    <a class="nav-link" th:href="@{/eleves} ">ELEVES</a>
+                </li>
+                <li class="navbar-nav">
+                    <a class="nav-link" th:href="@{/enseignants}">Enseignants</a>
+                </li>
+                </li>
+                <li class="navbar-nav">
+                    <a class="nav-link" th:href="@{/eleves/new} ">new eleves</a>
+                </li>
+                <li class="navbar-nav">
+                    <a class="nav-link" th:href="@{/classes} ">class-List</a>
+                </li>
+                <li class="navbar-nav">
+                    <a class="nav-link" th:href="@{/classes/new} ">new classi</a>
+                </li>
+            </ul>
+
+        </nav>
+    </div>
+
+
+    <footer th:fragment="food">
+
+        <div class="bg-primary p-5">
+            <div class="text-center ">
+                <div class="navbar-fixed-bottom ">
+                    <small>@Adresse de votre institution</small>
+                    <small>boujour Afrique</small>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+</body>
+
+</html>

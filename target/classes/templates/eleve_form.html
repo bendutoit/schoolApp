@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="" xmlns:th="http//www.thymeleaf.org">
+
+<head th:replace="fragments::html_head">
+    <title>LISTE ELEVES</title>
+</head>
+
+<body>
+    <div class="container text-center">
+        <div th:replace=" fragments::menu"></div>
+        <div>
+            <h2>Saisir un Eleve</h2>
+        </div>
+        <div class="card p-5 ">
+            <form th:action="@{/eleves/save}" th:object="${eleves}" method="post" style="max-width:600 px; margin:0 auto;">
+
+                <div class="ms-3">
+                    <div class="form-group row">
+                        <label class="col-form-label col-sm-4">Matricule:</label>
+                        <div class="col-ms-8">
+                            <input type="text" th:field="*{matriculeEl}" class="form-control" required/>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-form-label col-sm-4">Nom Eleve:</label>
+                        <div class="col-ms-8">
+                            <input type="text" th:field="*{nomElv}" class="form-control" required/>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-form-label col-sm-4">Classe Eleve:</label>
+                        <div class="col-ms-8">
+                            <select th:field="*{classes}" class="form-control" required>
+                        <th:block th:each="cla : ${listclasses}">
+                            <option th:text="${cla.codeclasses}" th:value="${cla.idClasses}">
+                        </th:block>
+                       </select>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-form-label col-sm-4">photo Eleve:</label>
+                        <div class="col-ms-8">
+                            <input type="text" th:field="*{photoEl}" class="form-control" required/>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-form-label col-sm-4">prenom Eleve:</label>
+                        <div class="col-ms-8">
+                            <input type="text" th:field="*{prenomEl}" class="form-control" required/>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-form-label col-sm-4">sexe Eleve:</label>
+                        <div class="col-ms-8">
+                            <input type="text" th:field="*{sexeEl}" class="form-control" required/>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-form-label col-sm-4">Quatier Eleve:</label>
+                        <div class="col-ms-8">
+                            <input type="text" th:field="*{quartierEl}" class="form-control" required/>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-form-label col-sm-4">Datenais Eleve:</label>
+                        <div class="col-ms-8">
+                            <input type="date" th:field="*{dateNais}" class="form-control" required/>
+                        </div>
+                    </div>
+                    <div class="text-center p-3">
+                        <button type="submit" class="btn btn-primary">save</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div th:replace="fragments::food "></div>
+    </div>
+</body>
+
+</html>

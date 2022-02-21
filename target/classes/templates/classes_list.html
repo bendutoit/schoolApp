@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="" xmlns:th="http//www.thymeleaf.org">
+
+<head th:replace="fragments::html_head">
+    <title>LISTE CLASSES</title>
+</head>
+
+<body>
+    <div class="container">
+        <div th:replace=" fragments::menu"></div>
+        <div class="card p-5 ">
+            <div class="card-header bg-primary text-white ">
+                <h6>LISTE CLASSES</h6>
+            </div>
+            <div class="card-body ">
+                <table class="table ">
+                    <caption></caption>
+                    <thead class="bg-primary ">
+                        <tr>
+                            <th>ID</th>
+                            <th>designation</th>
+
+                        </tr>
+                    </thead>
+                    <tr th:each="c:${listClasse} ">
+                        <td th:text="${c.idClasses} "></td>
+                        <td th:text="${c.codeclasses} "></td>
+
+                </table>
+
+            </div>
+        </div>
+        <div th:replace="fragments::food "></div>
+    </div>
+</body>
+
+</html>

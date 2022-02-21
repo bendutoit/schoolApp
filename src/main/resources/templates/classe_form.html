@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="" xmlns:th="http//www.thymeleaf.org">
+
+<head th:replace="fragments::html_head">
+    <title>LISTE CLASSES</title>
+</head>
+
+<body>
+    <div class="container text-center">
+        <div th:replace=" fragments::menu"></div>
+        <div>
+            <h2>Saisir une classe</h2>
+        </div>
+        <div class="card p-5 ">
+            <form th:action="@{/classes/save}" th:object="${classes}" method="post" style="max-width:600 px; margin:0 auto;">
+
+                <div class="ms-3">
+                    <div class="form-group row">
+                        <label class="col-form-label col-sm-4">Matricule:</label>
+                        <div class="col-ms-8">
+                            <input type="text" th:field="*{codeclasses}" class="form-control" required/>
+                        </div>
+
+                    </div>
+                    <div class="text-center p-3">
+                        <button type="submit" class="btn btn-primary">save</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div th:replace="fragments::food "></div>
+    </div>
+</body>
+
+</html>

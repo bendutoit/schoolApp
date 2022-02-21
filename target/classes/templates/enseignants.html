@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="" xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="fragments::html_head">
+    <title>LISTE ELEVES</title>
+</head>
+
+<body>
+    <div class="container">
+        <div th:replace="fragments::menu"></div>
+
+        <div class="card p-5">
+            <div class="card-header bg-primary text-white">Liste des Enseignants</div>
+            <div class="card-body">
+
+                <form th:action="@{enseignants}" method="get">
+                    <div class="mb-3">
+                        <label class="control-label">Mot clé:</label>
+                        <input type="text" name="motcle" th:value="${motcle}" />
+                        <button class="btn btn-primary">Chercher</button>
+                    </div>
+                </form>
+
+                <table class="table">
+                    <caption></caption>
+                    <thead class="bg-primary">
+                        <tr>
+                            <th>ID</th>
+                            <th>ANCIENITE</th>
+                            <th>DATENAIS</th>
+                            <th>GRADE</th>
+                            <th>MATRICULE</th>
+                            <th>NOM</th>
+                            <th>PRENOM</th>
+                            <th>QUARTIER</th>
+                            <th>SEXE</th>
+                            <th></th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tr th:each="e:${pageEnseignants.content}">
+                        <td th:text="${e.idEnseignants}"></td>
+                        <td th:text="${e.ancienite}"></td>
+                        <td th:text="${e.dateNais}"></td>
+                        <td th:text="${e.gradeEn}"></td>
+                        <td th:text="${e.matriculeEn}"></td>
+                        <td th:text="${e.nomEn}"></td>
+                        <td th:text="${e.prenomEn}"></td>
+                        <td th:text="${e.quartierEn}"></td>
+                        <td th:text="${e.sexeEn}"></td>
+                        <td><a onclick="javascript:confirm('voulez vraiment supprimer?')" class="btn btn-danger" th:href="@{deleteEnseignant(id=${e.idEnseignants},page=${currentpage},
+                            size=${size},motcle=${motcle})}">Delete</a></td>
+
+
+                    </tr>
+                </table>
+                <ul class="nav nav-pills">
+                    <li th:each="page,status:${pages}">
+                        <a th:class="${status.index==currentpage?'btn btn-primary':'btn'}" th:href="@{enseignants(page=${status.index},size=${size},motcle=${motcle})}" th:text="${status.index}">
+
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <script th:src="@{/webjars/jquery/3.0.0/jquery.min.js}"></script>
+        <script th:src="@{/webjars/popper.j/1.14.3/umd/popper.min.js}"></script>
+        <script th:src="@{/webjars/bootstrap/4.0.0-2/js/bootstrap.min.js}"></script>
+
+        <div th:replace="fragments::food"></div>
+    </div>
+</body>
+
+</html>
