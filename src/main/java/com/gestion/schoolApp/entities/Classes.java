@@ -18,11 +18,10 @@ import lombok.Data;
 
 import lombok.NoArgsConstructor;
 
-import lombok.ToString;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@ToString
+
 @Entity
 public class Classes {
    @Id
