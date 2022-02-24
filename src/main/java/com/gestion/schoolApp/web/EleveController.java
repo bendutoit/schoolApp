@@ -4,7 +4,7 @@ package com.gestion.schoolApp.web;
 
 import java.util.List;
 
-import javax.persistence.Id;
+
 
 import com.gestion.schoolApp.dao.ClasseRepository;
 import com.gestion.schoolApp.dao.EleveRepository;
